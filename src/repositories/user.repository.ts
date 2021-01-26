@@ -1,18 +1,14 @@
 import User from "../models/user.model";
+import IUserCreate from "../dto/user-create.dto";
 
 export default class UserRepository {
 
-    static async create(){
+    static async create(user:IUserCreate){
         try {
-            const user = await User.create({
-                fullname: 'gatito',
-                email: 'gatitomalo@gmail.com',
-                username: 'codex',
-                password: '123456'
-            });
-            return user;
+            const newUser = await User.create(user);
+            return newUser;
         } catch (error) {
-            console.log(error);
+            throw error;
         }
     }
 

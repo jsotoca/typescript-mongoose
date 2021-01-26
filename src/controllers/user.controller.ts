@@ -1,10 +1,13 @@
 import { Request, Response } from 'express';
+import IUserCreate from '../dto/user-create.dto';
 import UserService from '../services/user.service';
 
 export const create = async (req:Request, res:Response) => {
     try {
-        const user = await UserService.create();
-        res.json({
+        const { fullname, username, password, email } = req.body;
+        const newUser: IUserCreate = { fullname, username, password, email }; 
+        const user = await UserService.create(newUser);
+        return res.json({
             user
         });
     } catch (error) {
