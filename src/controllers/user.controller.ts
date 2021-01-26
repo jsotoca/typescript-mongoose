@@ -16,3 +16,16 @@ export const create = async (req:Request, res:Response) => {
         });
     }
 }
+
+export const getAll = async (req:Request, res:Response) => {
+    try {
+        const users = await UserService.getAll();
+        return res.json({
+            users
+        });
+    } catch (error) {
+        res.json({
+            error
+        });
+    }
+}

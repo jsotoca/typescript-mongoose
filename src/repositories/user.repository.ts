@@ -12,4 +12,13 @@ export default class UserRepository {
         }
     }
 
+    static async getAll(){
+        try {
+            const users = await User.find({});
+            return users;
+        } catch (error) {
+            throw error;
+        }
+    }
+
 }

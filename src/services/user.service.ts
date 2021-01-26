@@ -7,4 +7,8 @@ export default class UserService {
         return await UserRepository.create(user);
     }
 
+    static async getAll(){
+        return await UserRepository.getAll();
+    }
+
 }
